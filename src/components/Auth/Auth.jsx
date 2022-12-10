@@ -1,14 +1,17 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
+import { useUser } from '../../state/UserContext.jsx';
+import styles from './Auth.css';
 
 export default function Auth() {
+  const user = useUser();
+
+  // TODO: handle clever redirect to page that got us here
+  if (user) return <Navigate to="/" />;
+
   return (
-    <div>
-      <h1>Auth</h1>
-      <nav>
-        <Link to="">Sign In</Link>
-        <Link to="signup">Sign Up</Link>
-      </nav>
+    <main className={styles.Auth}>
+      <h1>Whisker Watcher</h1>
       <Outlet />
-    </div>
+    </main>
   );
 }

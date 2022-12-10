@@ -5,13 +5,7 @@ const HtmlPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
-const env = Object.entries({
-  ...require('dotenv').config(),
-  ...process.env,
-}).reduce((acc, [key, value]) => {
-  acc[key] = value;
-  return acc;
-}, {});
+require('dotenv').config();
 
 // eslint-disable-next-line
 module.exports = {
@@ -22,17 +16,21 @@ module.exports = {
     publicPath: '/',
   },
   devServer: {
-    port: 7891,
+    port: 3000,
     historyApiFallback: true,
   },
   plugins: [
     new HtmlPlugin({ template: './src/index.html' }),
     new CleanWebpackPlugin(),
-    new webpack.EnvironmentPlugin(env),
+    new webpack.EnvironmentPlugin([
+      'REACT_APP_SUPABASE_KEY',
+      'REACT_APP_SUPABASE_URL',
+    ]),
     new CopyPlugin({
       patterns: [{ from: 'public' }],
     }),
     new webpack.ProvidePlugin({
+      process: 'process/browser',
       React: 'react',
     }),
   ],
@@ -61,7 +59,16 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
-              modules: true,
+              modules: {
+                exportLocalsConvention: 'camelCase',
+                // The localIdentName provides a template in which the class
+                // names are mangled by CSS Modules. By default it is just a
+                // random hash. Below, we use the file name ([name]) and the
+                // class name ([local]) along with part of the hash. This allows
+                // us to be able to see what classes are applied to what
+                // elements in a human readable way.
+                localIdentName: '[name]__[local]__[hash:base64:5]',
+              },
               importLoaders: 1,
             },
           },
