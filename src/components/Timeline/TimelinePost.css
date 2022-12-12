@@ -1,0 +1,32 @@
+.post {
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  margin: var(--padding-half);
+  max-width: var(--main-content-width);
+  padding: var(--padding-half);
+
+  button {
+    background-color: var(--button-color);
+    border-radius: 2px;
+    color: var(--white-color);
+    padding: var(--padding-half);
+  }
+}
+
+.comments {
+  margin: var(--padding-half);
+  border: 1px solid var(--comment-border);
+  padding: var(--padding-half);
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.post-body {
+  padding: var(--padding-half);
+  margin: var(--padding-half);
+  background-color: var(--color-4);
+  border-radius: 3px;
+}

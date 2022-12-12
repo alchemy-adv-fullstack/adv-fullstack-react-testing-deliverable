@@ -29,7 +29,6 @@ export default function UserProvider({ children }) {
   }, []);
 
   const setUser = (user) => {
-    console.log('storing user', user)
     storeLocalUser(user);
     setUserState(user);
   };
@@ -61,7 +60,6 @@ export function useAuth() {
       console.error(error);
       setError(error.message);
     } else {
-      console.log('Setting user to ', user )
       setUser(user);
       setError(null);
     }
@@ -74,7 +72,6 @@ export function useAuth() {
 
   const signIn = async (credentials) => {
     const response = await signInUser(credentials);
-    console.log('signIn response', response)
     handleResponse(response);
   };
 

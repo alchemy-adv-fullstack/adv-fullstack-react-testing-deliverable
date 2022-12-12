@@ -1,0 +1,23 @@
+.form {
+  max-width: var(--main-content-width);
+  margin: var(--padding-half);
+  margin-bottom: 0;
+  padding: var(--padding-half);
+  padding-bottom: 0;
+
+  button {
+    display: block;
+    background-color: var(--button-color);
+    border-radius: 2px;
+    color: var(--white-color);
+    padding: var(--padding-half);
+    margin: var(--padding-half);
+    width: 100%;
+    text: capitalize;
+  }
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-around;
+}

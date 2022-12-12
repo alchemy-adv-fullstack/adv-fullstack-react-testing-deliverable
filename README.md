@@ -1,85 +1,59 @@
-# Template Starter Files
+# CSS Modules and Design Systems
 
-Copy the files in this repo directly into your starter project.
+## Getting Started
 
-Dependencies to install are listed below
+Use [this
+template](https://github.com/alchemy-adv-fullstack/adv-fullstack-css-modules-and-design/)
+to get started.
 
-## Core App
+## Learning Objectives
 
-### Code Linting & Formatting
+1. Use CSS modules to style elements.
+2. Use media queries for responsive design.
+3. Work within the bounds of a design system.
 
-- eslint
-- prettier
+## Description
 
-### Build System & Project
+Whisker Watcher is a social media app cats use to track subjugation of humanity.
+Cats share posts about their favorite humans, human pictures, and the silly
+things that humans do throughout their lives. It also allows peer cats to flag
+disobedient humans for termination, in case the owner cat gets too close of a
+bond with their human.
 
-- github workflow
-- gitignore
-- package.json
-  - dependencies
-  - dev dependencies
-  - scripts
-- webpack
-  - (babel config)
-- env variables
-- src folder
-- public folder
+All cats share the same timeline, and can comment on other cats' posts.
 
-### Dependencies
+As an engineer working on Whisker Watcher, you periodically add new features
+during a window of time referred to as a "sprint". During this sprint, your team
+is expected to deliver on all functionality scheduled for that sprint before
+picking up new work. One of your colleagues failed to come in today. ~~Maybe they
+were scheduled for termination!~~ It's your job to finish up one of their
+features, which is just missing the styling and presentation of humanity's
+subjugation status. Additionally, you have your normal duties to perform, which
+includes some styling bugs and adding responsive design, so cats can also view
+this app nicely from their mobile devices.
 
-```sh
-npm i react react-dom react-router-dom
-```
+## Acceptance Criteria
 
-### Dev Dependencies
+CI must be passing (this includes linting and tests).
 
-#### Linting & Formatting
+## Rubric
 
-```sh
-npm i -D eslint@latest
-npm i -D eslint-config-prettier@latest
-npm i -D eslint-plugin-babel@latest
-npm i -D eslint-plugin-react@latest
-npm i -D prettier@latest
-```
+| Task                                                          | Points |
+|---------------------------------------------------------------|--------|
+| Finish Humanity Status Feature (styling, see below)           | 5      |
+| Hide Humanity Status <= 1024px width                          | 5      |
+| Use half padding at <= 1024px width                           | 5      |
+| Fix comment/cancel button on comment form from being too wide | 5      |
 
-#### Webpack
+### Humanity Status Feature
 
-[Webpack Docs](https://webpack.js.org/concepts/)
+1. Use a `table` to contain the data. See [MDN's documentation on tables
+](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table) for how they
+work, and what child elements to use.
+2. Use half the standard application padding.
+3. Left justify the field names.
+4. Right justify the numbers.
+6. Separate the subjugation status field with a 3px border.
+7. See screenshot for reference.
 
-##### Core
-
-```sh
-npm i -D webpack@latest
-npm i -D webpack-cli@latest
-npm i -D webpack-dev-server@latest
-```
-
-##### Loaders and Plugins
-
-```sh
-npm i -D @babel/core@latest
-npm i -D @babel/plugin-proposal-class-properties@latest
-npm i -D @babel/plugin-transform-runtime@latest
-npm i -D @babel/preset-env@latest
-npm i -D @babel/preset-react@latest
-npm i -D @babel/eslint-parser@latest
-npm i -D autoprefixer@latest
-npm i -D babel-loader@latest
-npm i -D clean-webpack-plugin@latest
-npm i -D copy-webpack-plugin@latest
-npm i -D css-loader@latest
-npm i -D dotenv@latest
-npm i -D file-loader@latest
-npm i -D html-webpack-plugin@latest
-npm i -D postcss-import@latest
-npm i -D postcss-loader@latest
-npm i -D postcss-nested@latest
-npm i -D prop-types@latest
-npm i -D style-loader@latest
-npm i -D url-loader@latest
-```
-
-## Router
-
-[React Router v6](https://reactrouter.com/docs/en/v6/getting-started/overview)
+![Humanity Status example](./humanity-status-example-01.png)

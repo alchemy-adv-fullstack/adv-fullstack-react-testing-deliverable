@@ -1,9 +1,16 @@
 import { useState } from 'react';
+import styles from './TimelinePostForm.css';
 
-export default function TimelinePostForm({onCreatePost}) {
-  const [ body, setBody ] = useState('')
-  return <form onSubmit={(e) => onCreatePost(e, body)}>
+export default function TimelinePostForm({ onSubmitPost }) {
+  const [body, setBody] = useState('');
+  return <form className={styles.form} onSubmit={(e) => {
+    e.preventDefault();
+    setBody('');
+    onSubmitPost(body);
+  }}>
     <textarea value={body} onChange={(e) => setBody(e.target.value)}/>
-    <button type="submit">post</button>
-  </form>
+    <div className={styles.buttonRow}>
+      <button type="submit">post</button>
+    </div>
+  </form>;
 }

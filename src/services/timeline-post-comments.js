@@ -1,23 +1,37 @@
-import { del, get, post, put } from './request.js';
+import { client, checkError } from './client.js';
 
-const URL = '/api/v1/timeline-post-comments';
-
-export async function getComments() {
-  return []
+export async function getCommentsByPostId(postId) {
+  const response = await client
+    .from('timeline-post-comments')
+    .select(`
+*`)
+    .match({ timeline_post_id: postId })
+    // Ever notice comments are ascending while timelines are descending...?
+    .order('created_at', { ascending: true })
+  ;
+  return checkError(response);
 }
 
-export async function createComment(list) {
-  return await post(URL, list);
+export async function createComment(postId, user, body) {
+  const response = await client
+    .from('timeline-post-comments')
+    .insert({
+      body,
+      user_id: user.id,
+      timeline_post_id: postId,
+    })
+  ;
+  return checkError(response);
 }
 
-export async function createCommentItem(id, item) {
-  return await post(`${URL}/${id}/items`, item);
-}
-
-export async function deleteCommentItem(listId, itemId) {
-  return await del(`${URL}/${listId}/items/${itemId}`);
-}
-
-export async function updateCommentItem(listId, itemId, updates) {
-  return await put(`${URL}/${listId}/items/${itemId}`, updates);
+export async function updateComment(commentId, user, body) {
+  const response = await client
+    .from('timeline-post-comments')
+    .update({
+      body,
+      user_id: user.id,
+    })
+    .eq('id', commentId)
+  ;
+  return checkError(response);
 }

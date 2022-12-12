@@ -12,6 +12,9 @@ import AuthForm from './Auth/AuthForm.jsx';
 import TimelinePage from './Page/TimelinePage.jsx';
 import ProtectedRoute from './Auth/ProtectedRoute.jsx';
 import UserProvider from '../state/UserContext.jsx';
+import './Design.css';
+import TimelineBasePage from './Timeline/TimelineBasePage.jsx';
+import TimelinePostPage from './Timeline/TimelinePostPage.jsx';
 
 export default function App() {
   return (
@@ -22,8 +25,10 @@ export default function App() {
             <Route index element={<Dashboard />} />
             <Route element={<ProtectedRoute />}>
               <Route path="users" element={<Users />} />
-              <Route path="timeline" element={<TimelinePage />} />
-              {/* <Route path="posts/:id" element={<TimelinePostPage />} /> */}
+              <Route path="timeline" element={<TimelineBasePage />}>
+                <Route index element={<TimelinePage />} />
+                <Route path="posts/:id" element={<TimelinePostPage />} />
+              </Route>
             </Route>
           </Route>
 

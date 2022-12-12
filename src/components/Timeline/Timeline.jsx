@@ -1,9 +1,15 @@
-import TimelinePost from './TimelinePost.jsx'
+import TimelinePost from './TimelinePost.jsx';
 
-export default function Timeline({posts}) {
+export default function Timeline(props) {
   return (
     <ol>
-      {posts.map(post => <TimelinePost key={post.id} post={post} /> )}
+      {props.posts.map(post => <TimelinePost
+        key={post.id}
+        onEditPost={props.onEditPost}
+        onCreateComment={props.onCreateComment}
+        onEditComment={props.onEditComment}
+        post={post}
+      />)}
     </ol>
   );
 }

@@ -25,7 +25,7 @@
   "plugins": ["babel", "react"],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
-    "no-console": "warn",
+    "no-console": ["warn", { "allow": ["info", "warn", "error"] }],
     "indent": [
       "error",
       2,
@@ -66,6 +66,7 @@
     "babel/no-invalid-this": 1,
     "babel/semi": 0,
     "react/jsx-uses-react": "off",
+    "react/prop-types": 0,
     "react/react-in-jsx-scope": "off"
   }
 }

@@ -1,0 +1,14 @@
+.comment {
+}
+
+.body {
+  background-color: var(--comment-background-color);
+  display: block;
+  padding: var(--padding-half);
+  margin: var(--padding-half);
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-around;
+}
