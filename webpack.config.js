@@ -2,7 +2,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 require('dotenv').config();
@@ -11,6 +10,7 @@ require('dotenv').config();
 module.exports = {
   entry: './src/index.jsx',
   output: {
+    clean: true,
     filename: 'bundle.[hash].js',
     path: path.resolve(__dirname, './dist'),
     publicPath: '/',
@@ -21,7 +21,6 @@ module.exports = {
   },
   plugins: [
     new HtmlPlugin({ template: './src/index.html' }),
-    new CleanWebpackPlugin(),
     new webpack.EnvironmentPlugin([
       'REACT_APP_SUPABASE_KEY',
       'REACT_APP_SUPABASE_URL',
